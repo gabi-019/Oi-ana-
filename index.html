@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oi ana :)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    #pergunta {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    #botoes {
+      position: relative;
+      width: 100%;
+      height: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #sim {
+      background-color: #008CBA;
+      color: white;
+      position: static;
+    }
+
+    #nao {
+      background-color: #FF0000;
+      color: white;
+    }
+
+    #nao:hover {
+      background-color: #F00;
+    }
+
+    .tenor-gif-embed {
+      display: none; /* Esconde o GIF por padrão */
+      margin-top: 10px;
+      width: 10%; /* Reduz o GIF para 50% da largura original */
+      height: auto; /* Mantém a proporção do aspecto */
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1 id="pergunta">posso dar um beijo desses de cinema em vc hj?</h1>
+    <div id="botoes">
+      <button id="sim">Sim</button>
+      <button id="nao">Talvez</button>
+    </div>
+    <div class="tenor-gif-embed" data-postid="3971686153073610452" data-share-method="host" data-aspect-ratio="1">
+      <a href="https://tenor.com/view/cat-jump-happy-happy-happy-gif-3971686153073610452">Cat Jump Happy Happy Happy Sticker</a>
+      from <a href="https://tenor.com/search/cat+jump-stickers">Cat Jump Stickers</a>
+    </div>
+  </div>
+
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      const botaoSim = document.getElementById('sim');
+      const botaoNao = document.getElementById('nao');
+      const tenorGif = document.querySelector('.tenor-gif-embed');
+
+      botaoSim.addEventListener('click', function() {
+        tenorGif.style.display = 'block';
+      });
+
+      botaoNao.addEventListener('mouseenter', moverBotao);
+      botaoNao.addEventListener('touchstart', moverBotao);
+
+      function moverBotao(event) {
+        event.preventDefault();
+
+        const containerRect = document.getElementById('botoes').getBoundingClientRect();
+        const botaoRect = botaoNao.getBoundingClientRect();
+        const maxWidth = containerRect.width - botaoRect.width;
+        const maxHeight = containerRect.height - botaoRect.height;
+
+        let randomX = Math.random() * maxWidth;
+        let randomY = Math.random() * maxHeight;
+
+        botaoNao.style.left = `${randomX}px`;
+        botaoNao.style.top = `${randomY}px`;
+      }
+    });
+  </script>
+</body>
+</html>
